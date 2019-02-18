@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "samuelmg/gdocs",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Sistema Gestor de Documentos",
     "keywords": [
         "framework",
         "laravel"
