@@ -32,12 +32,6 @@ Route::get('/bienvenida/{nombre}/{apellido?}', function($nombre, $apellido = nul
       ]);
 });
 
+Auth::routes();
 
-
-
-
-
-
-
-
-/***/
+Route::get('/home', 'HomeController@index')->name('home');
