@@ -11,6 +11,11 @@ class PagainasController extends Controller
         return view('paginas.informacion');
     }
 
+    public function equipo()
+    {
+        return view('paginas.equipo');
+    }
+
     public function contacto()
     {
         return view('paginas.contacto');

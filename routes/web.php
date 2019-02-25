@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', 'PagainasController@info');
-Route::get('/contacto', 'PagainasController@contacto');
+Route::get('/informacion', 'PagainasController@info');
+Route::get('/desarrolladores', 'PagainasController@equipo')->name('equipo');
+Route::get('/contacto', 'PagainasController@contacto')->name('contacto');
 Route::get('/bienvenida/{nombre}/{apellido?}', 'PagainasController@bienvenida');
 
 Auth::routes();
