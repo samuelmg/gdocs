@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/inicio', function () {
+    return view('inicio');
+});
+
 Route::get('/informacion', 'PagainasController@info');
 Route::get('/desarrolladores', 'PagainasController@equipo')->name('equipo');
 Route::get('/contacto', 'PagainasController@contacto')->name('contacto');
