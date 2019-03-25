@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>Dependencia</th>
                         <th>Clave</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,9 @@
                             <td>{{ $dep->id }}</td>
                             <td>{{ $dep->dependencia }}</td>
                             <td>{{ $dep->clave }}</td>
+                            <td>
+                                <a href="{{ route('dependencias.show', $dep->id) }}">Detalle</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

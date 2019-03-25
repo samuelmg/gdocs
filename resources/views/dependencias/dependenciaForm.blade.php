@@ -12,18 +12,22 @@
             <h3 class="card-title">Capturar Dependencia</h3>
           </div>
           <div class="card-body">
-
-            <form action="{{ route('dependencias.store') }}" method="POST">
+            @if(isset($dependencia))
+                <form action="{{ route('dependencias.update', $dependencia->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="PATCH">
+            @else
+                <form action="{{ route('dependencias.store') }}" method="POST">
+            @endif
                 @csrf
                 
                 <div class="form-group">
                   <label class="form-label">Dependencia</label>
-                  <input type="text" class="form-control" name="dependencia" placeholder="Nombre de la dependencia">
+                  <input type="text" class="form-control" name="dependencia" value="{{ isset($dependencia) ? $dependencia->dependencia : '' }}" placeholder="Nombre de la dependencia">
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Clave</label>
-                  <input type="text" class="form-control" name="clave" placeholder="Clave de la dependencia">
+                  <input type="text" class="form-control" name="clave" value="{{ $dependencia->clave ?? '' }}" placeholder="Clave de la dependencia">
                 </div>
 
                 <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>

@@ -50,9 +50,10 @@ class DependenciaController extends Controller
      * @param  \App\Dependencia  $dependencia
      * @return \Illuminate\Http\Response
      */
+    //
     public function show(Dependencia $dependencia)
     {
-        //
+        return view('dependencias.dependenciaShow', compact('dependencia'));
     }
 
     /**
@@ -63,7 +64,7 @@ class DependenciaController extends Controller
      */
     public function edit(Dependencia $dependencia)
     {
-        //
+        return view('dependencias.dependenciaForm', compact('dependencia'));
     }
 
     /**
@@ -75,7 +76,11 @@ class DependenciaController extends Controller
      */
     public function update(Request $request, Dependencia $dependencia)
     {
-        //
+        $dependencia->dependencia = $request->input('dependencia');
+        $dependencia->clave = $request->clave;
+        $dependencia->save();
+        
+        return redirect()->route('dependencias.show', $dependencia->id);
     }
 
     /**
@@ -86,6 +91,7 @@ class DependenciaController extends Controller
      */
     public function destroy(Dependencia $dependencia)
     {
-        //
+        $dependencia->delete();
+        return redirect()->route('dependencias.index');
     }
 }

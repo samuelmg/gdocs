@@ -23,4 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Route::resource('material', 'MaterialController')
+//   ->parameters(['material' => 'material']);
+
 Route::resource('dependencias', 'DependenciaController');
