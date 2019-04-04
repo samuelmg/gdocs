@@ -77,6 +77,7 @@
         </div>
         <div class="my-3 my-md-5">
             <div class="container">
+                @include('partials.mensajes')
                 @yield('contenido')
             </div>
         </div>
