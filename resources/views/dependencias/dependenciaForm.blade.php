@@ -12,6 +12,17 @@
             <h3 class="card-title">Capturar Dependencia</h3>
           </div>
           <div class="card-body">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @if(isset($dependencia))
                 <form action="{{ route('dependencias.update', $dependencia->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH">
@@ -22,12 +33,17 @@
                 
                 <div class="form-group">
                   <label class="form-label">Dependencia</label>
-                  <input type="text" class="form-control" name="dependencia" value="{{ isset($dependencia) ? $dependencia->dependencia : '' }}" placeholder="Nombre de la dependencia">
+                  <input type="text" class="form-control" name="dependencia" value="{{ isset($dependencia) ? $dependencia->dependencia : '' }}{{ old('dependencia') }}" placeholder="Nombre de la dependencia">
+                    @if ($errors->has('dependencia'))
+                        <span class="alert alert-danger">
+                            <strong>{{ $errors->first('dependencia') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Clave</label>
-                  <input type="text" class="form-control" name="clave" value="{{ $dependencia->clave ?? '' }}" placeholder="Clave de la dependencia">
+                  <input type="text" class="form-control" name="clave" value="{{ $dependencia->clave ?? '' }}{{ old('clave') }}" placeholder="Clave de la dependencia">
                 </div>
 
                 <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>

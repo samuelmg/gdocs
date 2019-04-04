@@ -36,6 +36,11 @@ class DependenciaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'dependencia' => 'required|max:255',
+            'clave' => 'required|min:3|max:10',
+        ]);
+
         $dep = new Dependencia();
         $dep->dependencia = $request->input('dependencia');
         $dep->clave = $request->clave;
@@ -76,6 +81,11 @@ class DependenciaController extends Controller
      */
     public function update(Request $request, Dependencia $dependencia)
     {
+        $request->validate([
+            'dependencia' => 'required|max:255',
+            'clave' => 'required|min:3|max:10',
+        ]);
+        
         $dependencia->dependencia = $request->input('dependencia');
         $dependencia->clave = $request->clave;
         $dependencia->save();
