@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Description hacia muchos documentos
+     * @return type
+     */
+    public function documentos()
+    {
+        return $this->hasMany('App\Documento');
+    }
 }

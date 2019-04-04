@@ -27,3 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //   ->parameters(['material' => 'material']);
 
 Route::resource('dependencias', 'DependenciaController');
+
+Route::post('documentos/elimina-funcionario/{documento}', 'DocumentoController@eliminaFuncionario')
+    ->name('documentos.eliminaFuncionario');
+Route::resource('documentos', 'DocumentoController');
