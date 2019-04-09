@@ -143,7 +143,11 @@ class DocumentoController extends Controller
         //Sincroniza los funcionarios relacionados con el documento
         $documento->funcionarios()->sync($request->funcionarios_id);
 
-        return redirect()->route('documentos.index');
+        return redirect()->route('documentos.show', $documento->id)
+            ->with([
+                'mensaje' => 'Actualizado con Exito',
+                'alert-class' => 'alert-warning'
+            ]);
     }
 
     /**
