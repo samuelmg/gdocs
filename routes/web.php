@@ -29,5 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('dependencias', 'DependenciaController')->middleware('auth');
 
 Route::post('documentos/elimina-funcionario/{documento}', 'DocumentoController@eliminaFuncionario')
-    ->name('documentos.eliminaFuncionario');
+    ->name('documentos.eliminaFuncionario')
+    ->middleware('can:editar-documento,documento'); //Aplica Gate editar-documento (También se pueden aplicar Policies)
+    
 Route::resource('documentos', 'DocumentoController');

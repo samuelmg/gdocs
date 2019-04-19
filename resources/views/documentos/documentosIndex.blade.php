@@ -42,9 +42,12 @@
                                 </ul>
                             </td>
                             <td>
+                                {{-- Aplca DocumentoPolicy@update --}}
+                                @can('update', $doc)
                                 <a href="{{ route('documentos.edit', $doc->id) }}" class="btn btn-sm btn-warning">
                                     Editar
                                 </a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

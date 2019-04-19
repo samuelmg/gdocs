@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Documento' => 'App\Policies\DocumentoPolicy',
     ];
 
     /**
@@ -25,6 +25,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        /**
+         * Define gate llamado 'ediatar-documento'
+         * 
+         * La expresión solo será verdadera si el usuario es quien recibe el documento
+         * 'editar-documento' Nombre del Gate
+         * $user Es la instancia del usuario logeado
+         * $documento Es la instancia del documento
+         * @return boolean
+         */
+        Gate::define('editar-documento', function($user, $documento) {
+            return $user->id == $documento->user_id;
+        });
+
     }
 }

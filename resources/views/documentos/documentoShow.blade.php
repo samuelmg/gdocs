@@ -29,15 +29,21 @@
                         <td>{{ $documento->recibido }}</td>
                         <td>{{ $documento->user->name }} ({{ $documento->user->email }})</td>
                         <td>
+                            {{-- Aplica gate editar-documento --}}
+                            @can('editar-documento', $documento)
                             <a href="{{ route('documentos.edit', $documento->id) }}" class="btn btn-sm btn-warning">
                                 Editar
                             </a>
+                            @endcan
 
+                            {{-- Aplica DocumentoPolicy@delete --}}
+                            @can('delete', $documento)
                             <form action="{{ route('documentos.destroy', $documento->id) }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
                             </form>
+                            @endcan
                         </td>
                     </tr>
                 </tbody>

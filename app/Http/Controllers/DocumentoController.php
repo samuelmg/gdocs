@@ -128,6 +128,21 @@ class DocumentoController extends Controller
      */
     public function edit(Documento $documento)
     {
+        //Aplica Gate editar-documento. En caso de que regrese falso, se redireccionará a la ruta anterior
+        if (\Gate::denies('editar-documento', $documento)) {
+            return redirect()->back()
+                ->with(['mensaje' => 'No es tu documento']);
+        }
+
+        //Esta expresión regresa error de HTTP 403 (No autorizado)
+        //$this->authorize('editar-documento', $documento);
+        
+        //Otra forma de aplicar el Gate a partir de una instancia del usuario
+        // if (\Auth::user()->cannot('editar-documento', $documento)) {
+        //     return redirect()->back()
+        //         ->with(['mensaje' => 'No es tu documento']);
+        // }
+
         $usuarios = User::all();
         $funcionarios = Funcionario::all();
 
@@ -164,6 +179,11 @@ class DocumentoController extends Controller
      */
     public function destroy(Documento $documento)
     {
+        //Aplica DocumentoPolicy@delete
+        if(\Auth::user()->cannot('delete', $documento)){
+            return redirect()->back();
+        }
+
         /*
          * Elimina la relación entre documento y funcionarios.
          * No se requiere si se agregó un FK constraint con onDelete('cascade')
