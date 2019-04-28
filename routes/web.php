@@ -33,3 +33,8 @@ Route::post('documentos/elimina-funcionario/{documento}', 'DocumentoController@e
     ->middleware('can:editar-documento,documento'); //Aplica Gate editar-documento (También se pueden aplicar Policies)
     
 Route::resource('documentos', 'DocumentoController');
+
+//Rutas para envío de correo electrónico de seguimiento
+Route::get('seguimiento/lista-usuarios', 'MailSeguimientoController@listaUsuarios');
+Route::get('seguimiento/envia-correo/{user}', 'MailSeguimientoController@enviaCorreo');
+
