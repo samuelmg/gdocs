@@ -26,4 +26,13 @@ class Documento extends Model
     {
         return $this->belongsToMany(Funcionario::class);
     }
+
+    /**
+     * Relación polimórfica hacia muchos archivos
+     * @return type
+     */
+    public function archivos()
+    {
+        return $this->morphMany('App\Archivo', 'modelo');
+    }
 }

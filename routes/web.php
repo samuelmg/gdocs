@@ -38,3 +38,5 @@ Route::resource('documentos', 'DocumentoController');
 Route::get('seguimiento/lista-usuarios', 'MailSeguimientoController@listaUsuarios');
 Route::get('seguimiento/envia-correo/{user}', 'MailSeguimientoController@enviaCorreo');
 
+//Rutas para carga, descarta y eliminación de archivos
+Route::resource('archivo', 'ArchivoController', ['except' => ['create', 'edit', 'update']]);

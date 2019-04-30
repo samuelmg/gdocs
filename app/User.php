@@ -45,4 +45,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Documento');
     }
+
+    /**
+     * Relación polimórfica hacia muchos archivos
+     * @return type
+     */
+    public function archivos()
+    {
+        return $this->morphMany('App\Archivo', 'modelo');
+    }
 }
