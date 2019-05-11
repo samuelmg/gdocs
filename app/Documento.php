@@ -10,6 +10,7 @@ class Documento extends Model
     use SoftDeletes;
     //protected $fillable = ['envia', 'no_oficio', 'fecha_oficio', 'recibido'];
     protected $guarded = ['id'];
+    protected $dates = ['fecha_oficio', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * Establece relación hacia un usuario

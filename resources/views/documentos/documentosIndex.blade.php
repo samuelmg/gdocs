@@ -31,7 +31,7 @@
                             </td>
                             <td>{{ $doc->envia }}</td>
                             <td>{{ $doc->no_oficio }}</td>
-                            <td>{{ $doc->fecha_oficio }}</td>
+                            <td>{{ $doc->fecha_oficio->format('d/m/Y') }}</td>
                             <td>{{ $doc->recibido }}</td>
                             <td>{{ $doc->user->name }} ({{ $doc->user->email }})</td>
                             <td>
