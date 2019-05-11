@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Documento extends Model
 {
+    use SoftDeletes;
     //protected $fillable = ['envia', 'no_oficio', 'fecha_oficio', 'recibido'];
     protected $guarded = ['id'];
 

@@ -21,6 +21,7 @@ class CreateDocumentosTable extends Migration
             $table->date('fecha_oficio');
             $table->dateTime('recibido');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
