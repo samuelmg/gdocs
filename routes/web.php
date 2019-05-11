@@ -28,6 +28,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('dependencias', 'DependenciaController')->middleware('auth');
 
+//Se agrega /listado para prevenir duplicidad con ruta para funcionario.store que también utiliza POST
+Route::match(['GET', 'POST'], '/funcionarios/listado', 'FuncionarioController@index')->name('funcionarios.index');
+//Route::resource('funcionarios', 'FuncionarioController')->except('index'); //Aún no implementada
+
 Route::post('documentos/elimina-funcionario/{documento}', 'DocumentoController@eliminaFuncionario')
     ->name('documentos.eliminaFuncionario')
     ->middleware('can:editar-documento,documento'); //Aplica Gate editar-documento (También se pueden aplicar Policies)
