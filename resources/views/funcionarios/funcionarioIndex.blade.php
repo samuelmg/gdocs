@@ -18,15 +18,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Cargo</th>
+                        <th>Nombre y Cargo</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($funcionarios as $funcionario)
                         <tr>
-                            <td>{{ $funcionario->nombre }}</td>
-                            <td>{{ $funcionario->cargo }}</td>
+                            <td>{{ $funcionario->nombre_cargo }}</td>
                         </tr>
                     @endforeach
                 </tbody>

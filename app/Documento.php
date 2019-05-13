@@ -38,4 +38,14 @@ class Documento extends Model
     {
         return $this->morphMany('App\Archivo', 'modelo');
     }
+
+    /**
+     * Guarda el número de oficio en mayúsculas.
+     * @param string $no_oficio
+     * @return void
+     */
+    public function setNoOficioAttribute($no_oficio)
+    {
+        $this->attributes['no_oficio'] = strtoupper($no_oficio);
+    }
 }
